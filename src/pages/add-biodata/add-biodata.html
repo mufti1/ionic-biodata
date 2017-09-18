@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>{{ PageTitle }}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div>
+		<ion-item *ngIf="isEdited && !hideForm">
+			<button ion-button item-right color="danger" icon-right text-center block outline (click)="hapusData()">Hapus</button>
+		</ion-item>
+
+		<div *ngIf="hideForm">
+			<ion-item class = "post-entry-message" text-wrap>
+				<p>Untuk mengedit atau menghapus data</p>
+				<p>Kembali ke Menu Utama</p>
+			</ion-item>
+		</div>
+
+		<div *ngIf="!hideForm">
+			<form [formGroup] = "form" (ngSubmit)="simpanData()">
+				<ion-list>
+					<ion-item-group>
+						<ion-item-divider color="light">Nama Depan</ion-item-divider>
+						<ion-item>
+							<ion-input type="text" placeholder ="Nama Depan..." formControlName="namaDepan" [(ngModel)]="biodataNamaDepan"></ion-input>
+						</ion-item>
+					</ion-item-group>
+				</ion-list>
+			</form>
+		</div>
+	</div>
+</ion-content>
